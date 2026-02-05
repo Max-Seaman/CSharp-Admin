@@ -1,0 +1,62 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* Navbar hover and active styles - desktop only  */
+@media (min-width: 577px) {
+  .nav-link.hover-change {
+    color: #495057; /* default */
+    transition: color .15s ease, background-color .15s ease, border-color .15s ease;
+  }
+  .nav-link.hover-change:hover {
+    color: #0d6efd; /* bootstrap primary */
+    text-decoration: none;
+  }
+  .nav-link.active,
+  .nav-link[aria-current="page"] {
+    color: #0d6efd;
+    font-weight: 600;
+    border-bottom: 2px solid #0d6efd;
+    padding-bottom: .25rem;
+  }
+}
+
+/* Ensure wide tables can scroll horizontally on small screens */
+.table-responsive {
+  overflow-x: auto;
+}
+.table-responsive > .table {
+  margin-bottom: 0;
+}
+
+/* Company logo - fixed square thumbnail used across views */
+.company-logo {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  display: inline-block;
+}

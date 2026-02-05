@@ -1,0 +1,109 @@
+@model IEnumerable<CSharp_Admin.Models.Company>
+
+@{
+    ViewData["Title"] = "Companies | Index";
+}
+
+<div class="container-fluid py-4">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0">Companies</h1>
+
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="bi bi-plus-circle"></i>
+            Add Company
+        </a>
+    </div>
+
+    <!-- Table Card -->
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr class="text-center">
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Website</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center text-muted py-4">
+                                    No companies found.
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var company in Model)
+                            {
+                                <tr class="text-center">
+                                    <td>
+                                        <strong>@company.Name</strong>
+                                    </td>
+
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(company.Email))
+                                        {
+                                            <a href="mailto:@company.Email">
+                                                @company.Email
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">—</span>
+                                        }
+                                    </td>
+
+                                    <td>
+                                        @if (!string.IsNullOrEmpty(company.Website))
+                                        {
+                                            <a href="@company.Website" target="_blank">
+                                                Visit
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted">—</span>
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a asp-action="Edit"
+                                            asp-route-id="@company.Id"
+                                            class="btn btn-outline-primary">
+                                                Edit
+                                            </a>
+
+                                            <a asp-action="Details"
+                                            asp-route-id="@company.Id"
+                                            class="btn btn-outline-secondary">
+                                                View
+                                            </a>
+
+                                            <a asp-action="Delete"
+                                            asp-route-id="@company.Id"
+                                            class="btn btn-outline-danger">
+                                                Delete
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>    
+
+        </div>
+    </div>
+
+</div>

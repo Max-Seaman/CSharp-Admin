@@ -1,0 +1,76 @@
+@model CSharp_Admin.Models.Company
+
+@{
+    ViewData["Title"] = "Companies | Edit";
+}
+
+<div class="container-fluid py-4">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="h3 mb-1">Edit Company</h1>
+            <p class="text-muted mb-0">Update company details</p>
+        </div>
+
+        <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-secondary">
+            Back
+        </a>
+    </div>
+
+    <form asp-action="Edit" asp-route-id="@Model.Id" method="post" enctype="multipart/form-data">
+
+        <input type="hidden" asp-for="Id" />
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <div class="row g-3">
+
+                    <div class="col-6">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Logo" class="form-label">Logo</label>
+                        <input asp-for="Logo" type="file" class="form-control" />
+                        <span asp-validation-for="Logo" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Website" class="form-label"></label>
+                        <input asp-for="Website" class="form-control" />
+                        <span asp-validation-for="Website" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card-footer d-flex justify-content-end gap-2">
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    Cancel
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    Save Changes
+                </button>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

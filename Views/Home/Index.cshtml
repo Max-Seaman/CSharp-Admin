@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "Admin | Home";
+}
+
+<div class="container-fluid py-4">
+    <div class="mb-4">
+        <h1 class="h3 mb-0">Home</h1>
+    </div>
+
+    <div class="row g-3 mb-4">
+        <div class="col-12 col-md-6">
+            <div class="card h-100">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="card-title">Companies</h5>
+                            <p class="text-muted mb-0">View and manage companies</p>
+                        </div>
+                        <div class="text-end">
+                            <p class="h4 mb-0">@ViewBag.TotalCompanies</p>
+                            <small class="text-muted">Total</small>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2 mt-3">
+                        <a asp-controller="Companies" asp-action="Index" class="btn btn-outline-primary">Manage Companies</a>
+                        <a asp-controller="Companies" asp-action="Create" class="btn btn-primary">Create Company</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <div class="card h-100">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div>
+                            <h5 class="card-title">Employees</h5>
+                            <p class="text-muted mb-0">View and manage employees</p>
+                        </div>
+                        <div class="text-end">
+                            <p class="h4 mb-0">@ViewBag.TotalEmployees</p>
+                            <small class="text-muted">Total</small>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2 mt-3">
+                        <a asp-controller="Employees" asp-action="Index" class="btn btn-outline-success">Manage Employees</a>
+                        <a asp-controller="Employees" asp-action="Create" class="btn btn-success">Create Employee</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">Recent Changes</div>
+                <div class="card-body">
+                    <h6>Recent Employees</h6>
+                    <ul class="list-group mb-3">
+                        @foreach(var employee in ViewBag.RecentEmployees)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                @employee.FirstName @employee.LastName
+                                <span class="text-muted">@employee.Company?.Name</span>
+                            </li>
+                        }
+                    </ul>
+
+                    <h6>Recent Companies</h6>
+                    <ul class="list-group">
+                        @foreach(var company in ViewBag.RecentCompanies)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                @company.Name
+                                <span class="text-muted">@company.Email</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+@model CSharp_Admin.Models.Company
+
+@{
+    ViewData["Title"] = "Companies | Delete";
+}
+
+
+<div class="container-fluid py-4">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="h3 mb-1">Delete Company</h1>
+            <p class="text-muted mb-0">Are you sure you want to delete this company?</p>
+        </div>
+
+        <a asp-action="Index" class="btn btn-secondary">
+            Back
+        </a>
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <div class="row g-3">
+
+                <div class="col-md-6">
+                    <label class="form-label">Name</label>
+                    <input asp-for="Name" class="form-control" disabled />
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Email</label>
+                    <input asp-for="Email" class="form-control" disabled />
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Website</label>
+                    <input asp-for="Website" class="form-control" disabled />
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Logo</label>
+                    <input asp-for="LogoPath" class="form-control" disabled />
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card-footer d-flex justify-content-end gap-2">
+
+            <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+
+            <form asp-action="Delete" asp-route-id="@Model.Id" method="post" class="d-inline">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger">
+                    Delete Company
+                </button>
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
